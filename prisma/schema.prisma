@@ -1,0 +1,17 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model UdyamRegistrationDraft {
+    id        String   @id @default(cuid())
+    step1Data Json?
+    step2Data Json?
+    status    String   @default("DRAFT")
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
